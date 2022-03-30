@@ -4,8 +4,6 @@ import { QUERIES}  from '../constants';
 import IconStar from '../images/icon-star.svg'
 import ThankYouImg from '../images/illustration-thank-you.svg'; 
 import Rates from './Rates'; 
-import { calculateNewValue } from "@testing-library/user-event/dist/utils";
-import { SignalCellularNullSharp } from "@material-ui/icons";
 
 
 const Wrapper = styled.div`
