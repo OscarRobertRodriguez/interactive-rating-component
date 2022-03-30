@@ -153,18 +153,19 @@ const Card = () => {
   }
  
   return (
-    <Wrapper>
+    <>
     {submit  ?  
-      <>
+
+      <Wrapper>
       <Img style={{alignSelf: 'center', display: 'block'}} src={ThankYouImg}  />
       <ThanksButton>you selected {selectedRate} out of 5</ThanksButton>
       <Title style={{textAlign: "center", paddingTop: "24px"}}>Thank you!</Title>
       <Info style={{textAlign: "center"}}>
          We appreciate you taking the time to give a rating. If you ever need more support, don’t hesitate to get in touch!
       </Info>
-      </>
+      </Wrapper>
     :
-     <>
+     <Wrapper>
       <IconWrapper>
         <Icon src={IconStar} />
       </IconWrapper>
@@ -178,9 +179,9 @@ const Card = () => {
       <div className='buttonWrapper' style={{cursor: 'pointer'}} onClick={(e) => !selectedRate ? setValueExist(false)  : setValueExist(true) }> 
        <SubmitButton disabled={!selectedRate} style={{pointerEvents: selectedRate ? 'auto' : 'none'}} onClick={() => setSubmit(true)} value='button' type='submit'>{ setReminderHandler(valueExist) }</SubmitButton>
       </div>
-      </>
+      </Wrapper>
   }
-    </Wrapper>
+  </>
   );
 };
 
