@@ -5,6 +5,7 @@ import IconStar from '../images/icon-star.svg'
 import ThankYouImg from '../images/illustration-thank-you.svg'; 
 import Rates from './Rates'; 
 import { calculateNewValue } from "@testing-library/user-event/dist/utils";
+import { SignalCellularNullSharp } from "@material-ui/icons";
 
 
 const Wrapper = styled.div`
@@ -136,12 +137,23 @@ const ThanksButton = styled.button`
 
 const Card = () => {
   const [submit, setSubmit] = useState(false); 
-  const [selectedRate, setSelectedRate] = useState(null); 
+  const [selectedRate, setSelectedRate] = useState(undefined); 
+  const [valueExist, setValueExist] = useState(null); 
  
   const selectedRateHandler = (value) => {
     setSelectedRate(value)  
   } 
 
+  const setReminderHandler = (value) => {
+    
+
+    if(!value && value !== null && !selectedRate) {
+      return "Select a Value"; 
+    } 
+      return "Submit" 
+    
+  }
+ 
   return (
     <Wrapper>
     {submit  ?  
@@ -164,8 +176,10 @@ const Card = () => {
           Please let us know how we did with your support request. All feedback is appreciated to help us improve our offering!
         </Info>
       </TextWrapper>
-       <Rates selectedRateHandler={selectedRateHandler}/> 
-      <SubmitButton onClick={() => setSubmit(true)} value='button' type='submit'>Submit</SubmitButton>
+       <Rates selectedRateHandler={selectedRateHandler}/>
+      <div className='buttonWrapper' style={{cursor: 'pointer'}} onClick={(e) => !selectedRate ? setValueExist(false)  : setValueExist(true) }> 
+       <SubmitButton disabled={!selectedRate} style={{pointerEvents: selectedRate ? 'auto' : 'none'}} onClick={() => setSubmit(true)} value='button' type='submit'>{ setReminderHandler(valueExist) }</SubmitButton>
+      </div>
       </>
   }
     </Wrapper>

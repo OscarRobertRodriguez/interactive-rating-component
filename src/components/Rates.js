@@ -53,12 +53,12 @@ const values = [1, 2, 3, 4, 5];
 
 
 const Rates = ({selectedRateHandler}) => {
-  const [active, setActive] = useState(values[0]);
+  const [active, setActive] = useState(null);
   
-  useEffect(() => {
-     selectedRateHandler(values[0]);
-  // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []); 
+  // useEffect(() => {
+  //    selectedRateHandler(values[0]);
+  // // eslint-disable-next-line react-hooks/exhaustive-deps
+  // }, []); 
   
  
   return (
